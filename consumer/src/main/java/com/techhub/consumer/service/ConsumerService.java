@@ -10,7 +10,7 @@ public class ConsumerService {
 
 	@RabbitListener(queues = Constant.QUEUE_NAME_1)
 	public void handleMessage1(String message) {
-		System.out.println("HaiService - onMessageArrived for Queue1");
+		System.out.println("Consumer - handleMessage1 for Queue1");
 		System.out.println("-------------------");
 		System.out.println("Message : " + message);
 		System.out.println("-------------------");
@@ -18,7 +18,7 @@ public class ConsumerService {
 
 	@RabbitListener(queues =  Constant.QUEUE_NAME_2)
 	public void handleMessage2(String message) {
-		System.out.println("HaiService - onMessageArrived for Queue2");
+		System.out.println("Consumer - handleMessage2 for Queue2");
 		System.out.println("-------------------");
 		System.out.println("Message : " + message);
 		System.out.println("-------------------");
@@ -26,7 +26,7 @@ public class ConsumerService {
 
 	@RabbitListener(queues =  Constant.QUEUE_NAME_3)
 	public void handleMessage3(String message) {
-		System.out.println("Consumer - handleMessage3");
+		System.out.println("Consumer - handleMessage3  for Queue3");
 		System.out.println("-------------------");
 		System.out.println("Message : " + message);
 		System.out.println("-------------------");
