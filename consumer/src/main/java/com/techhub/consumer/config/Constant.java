@@ -5,7 +5,7 @@ public final class Constant {
 	private Constant() {
 	}
 
-	public static final String EXCHANGE_NAME = "my-exchange-3";
+	public static final String EXCHANGE_NAME = "my-exchange-4";
 
 	public static final String QUEUE_NAME_1 = "my-queue-1";
 
@@ -13,18 +13,16 @@ public final class Constant {
 
 	public static final String QUEUE_NAME_3 = "my-queue-3";
 
-	/**
-	 * Here star [ * ] means zero or more words and dot [ . ] is used to
-	 * differentiate the words
-	 */
-	public static final String MY_KEY_1 = "my.*";
+	public static final String HEADERS_NAME_1 = "myheader1";
 
-	/**
-	 * Here hash [ # ]means one or more words and dot [ . ] is used to differentiate
-	 * the words
-	 */
-	public static final String MY_KEY_2 = "my.#";
+	public static final String HEADERS_NAME_1_VAL = "h-val-1";
 
-	public static final String MY_KEY_3 = "my.key.*";
+	public static final String HEADERS_NAME_2 = "myheader2";
+
+	public static final String HEADERS_NAME_2_VAL = "h-val-2";
+
+	public static final String HEADERS_NAME_3 = "myheader3";
+
+	public static final String HEADERS_NAME_3_VAL = "h-val-3";
 
 }

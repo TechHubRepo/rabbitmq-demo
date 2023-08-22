@@ -13,9 +13,9 @@ public class ProducerController {
 	@Autowired
 	private ProducerService producerService;
 
-	@GetMapping(value = "/m/{message}/{key}")
-	public String sendMessage1(@PathVariable String message, @PathVariable String key) {
-		producerService.sendMessage(message, key);
+	@GetMapping(value = "/m/{message}/{headerName}/{headerValue}")
+	public String sendMessage1(@PathVariable String message, @PathVariable String headerName, @PathVariable String headerValue) {
+		producerService.sendMessage(message, headerName, headerValue);
 		return message;
 	}
 }
