@@ -12,8 +12,9 @@ public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 
-	public void sendMessage(String message) {
+	public void sendMessage(String message, String key) {
 		System.out.println("Message : " + message);
-		rabbitTemplate.convertAndSend(Constant.EXCHANGE_NAME, "",message);
+		System.out.println("Key : " + key);
+		rabbitTemplate.convertAndSend(Constant.EXCHANGE_NAME, key,message);
 	}
 }

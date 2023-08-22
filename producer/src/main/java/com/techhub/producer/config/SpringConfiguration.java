@@ -2,7 +2,7 @@ package com.techhub.producer.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ public class SpringConfiguration {
 	 */
 	@Bean(name = "myExchange1")
 	public Exchange myExchange1() {
-		return ExchangeBuilder.fanoutExchange(Constant.EXCHANGE_NAME).build();
+		return ExchangeBuilder.topicExchange(Constant.EXCHANGE_NAME).build();
 	}
 
 	/**
@@ -43,8 +43,9 @@ public class SpringConfiguration {
 	 * @return
 	 */
 	@Bean
-	public Binding myBinding1(Queue myQueue1, FanoutExchange myExchange1) {
-		return BindingBuilder.bind(myQueue1).to(myExchange1);
+	public Binding myBinding1(Queue myQueue1, TopicExchange myExchange1) {
+		return BindingBuilder.bind(myQueue1).to(myExchange1).with(Constant.MY_KEY_1);
+		
 	}
 
 	/**
@@ -66,8 +67,8 @@ public class SpringConfiguration {
 	 * @return
 	 */
 	@Bean
-	public Binding myBinding2(Queue myQueue2, FanoutExchange myExchange1) {
-		return BindingBuilder.bind(myQueue2).to(myExchange1);
+	public Binding myBinding2(Queue myQueue2, TopicExchange myExchange1) {
+		return BindingBuilder.bind(myQueue2).to(myExchange1).with(Constant.MY_KEY_2);
 	}
 
 	/**
@@ -89,7 +90,7 @@ public class SpringConfiguration {
 	 * @return
 	 */
 	@Bean
-	public Binding myBinding3(Queue myQueue3, FanoutExchange myExchange1) {
-		return BindingBuilder.bind(myQueue3).to(myExchange1);
+	public Binding myBinding3(Queue myQueue3, TopicExchange myExchange1) {
+		return BindingBuilder.bind(myQueue3).to(myExchange1).with(Constant.MY_KEY_3);
 	}
 }
