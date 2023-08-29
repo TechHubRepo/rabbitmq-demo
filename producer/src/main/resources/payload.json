@@ -1,0 +1,21 @@
+{
+    "order": {
+        "orderId":50,
+        "orderNumber": "10",
+        "userId": "U0011",
+        "totalQty": 5,
+        "totalCost": 600,
+        "orderDate":"29-08-2023",
+        "status": "NEW"
+    },
+    "itemsList": [
+        {
+            "orderItemId":99,
+            "orderId":100,
+            "bookId":500,
+            "qty":1,
+            " cost":700
+
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 package com.techhub.producer.service;
 
-import com.techhub.producer.vo.Order;
+import com.techhub.producer.vo.OrderInfoVo;
 
 public interface ProducerService {
 	
-	public void sendMessage(Order message);
+	public void sendMessage(OrderInfoVo message);
 }

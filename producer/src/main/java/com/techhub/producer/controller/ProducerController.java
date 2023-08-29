@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techhub.producer.service.ProducerService;
-import com.techhub.producer.vo.Order;
+import com.techhub.producer.vo.OrderInfoVo;
 
 @RestController
 public class ProducerController {
@@ -15,8 +15,8 @@ public class ProducerController {
 	private ProducerService producerService;
 
 	@PostMapping(value = "/message")
-	public String sendMessage1(@RequestBody Order order) {
-		producerService.sendMessage(order);
+	public String sendMessage1(@RequestBody OrderInfoVo orderInfoVo) {
+		producerService.sendMessage(orderInfoVo);
 		System.out.println("==== MESSAGE SENT ====");
 		return "MESSAGE SENT";
 	}
