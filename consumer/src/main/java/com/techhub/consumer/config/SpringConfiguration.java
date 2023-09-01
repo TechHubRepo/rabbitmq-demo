@@ -4,46 +4,50 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.ExchangeBuilder;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import org.springframework.amqp.core.Exchange;
-import org.springframework.amqp.core.Queue;
 
 @Configuration
 public class SpringConfiguration {
 
-	/**
-	 * Creating the exchange with name my-exchange-1
-	 * 
-	 * @return
-	 */
-	@Bean(name = "myExchange")
-	public Exchange myExchange() {
-		return ExchangeBuilder.directExchange(Constant.EXCHANGE_NAME).build();
+	/** RATING exchange, queue and routing key configuration */
+
+	@Bean(name = "myRatingExchange")
+	public DirectExchange myRatingExchange() {
+		return ExchangeBuilder.directExchange(Constant.RATING_EXCHANGE).build();
 	}
 
-	/**
-	 * Creating a queue with name myQueue1
-	 * 
-	 * @return
-	 */
-	@Bean(name = "myQueue")
-	public Queue myQueue() {
-		return QueueBuilder.durable(Constant.QUEUE_NAME).build();
+	@Bean(name = "myRatingQueue")
+	public Queue myRatingQueue() {
+		return QueueBuilder.durable(Constant.RATING_QUEUE).build();
 	}
 
-	/**
-	 * Binding the myQueue with myExchange using routing key, the routing key name
-	 * my.hello.key
-	 * 
-	 * @param myQueue1
-	 * @param myExchange1
-	 * @return
-	 */
 	@Bean
-	public Binding myBinding1(Queue myQueue, DirectExchange myExchange) {
-		return BindingBuilder.bind(myQueue).to(myExchange).with(Constant.ROUTING_KEY);
+	public Binding myNamasteBinding(
+			@Qualifier("myRatingQueue") Queue queue,
+			@Qualifier("myRatingExchange") DirectExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with(Constant.RATING_ROUTING_KEY);
+	}
+
+	/** ORDER exchange, queue and routing key configuration */
+
+	@Bean(name = "myOrderExchange")
+	public DirectExchange myOrderExchange() {
+		return ExchangeBuilder.directExchange(Constant.ORDER_EXCHANGE).build();
+	}
+
+	@Bean(name = "myOrderQueue")
+	public Queue myOrderQueue() {
+		return QueueBuilder.durable(Constant.ORDER_QUEUE).build();
+	}
+
+	@Bean
+	public Binding myHelloBinding(
+			@Qualifier("myOrderQueue") Queue queue,
+			@Qualifier("myOrderExchange") DirectExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with(Constant.ORDER_ROUTING_KEY);
 	}
 }

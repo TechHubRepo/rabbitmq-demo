@@ -1,4 +1,8 @@
-{
+# Order curl 
+
+curl --location 'http://localhost:5000/send/message/order' \
+--header 'Content-Type: application/json' \
+--data '{
     "order": {
         "orderId":50,
         "orderNumber": "10",
@@ -18,4 +22,17 @@
 
         }
     ]
-}
+}'
+
+# Rating curl 
+
+curl --location 'http://localhost:5000/send/message/rating' \
+--header 'Content-Type: application/json' \
+--data '{
+    "ratingId":100,
+    "bookId":200,
+    "userId":"U0001",
+    "rating":5,
+    "review":"A nice book"
+}'
+
