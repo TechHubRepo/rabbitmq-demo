@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class SpringConfiguration {
+public class RabbitMQConfiguration {
 
 	/** RATING exchange, queue and routing key configuration */
 
@@ -26,7 +26,7 @@ public class SpringConfiguration {
 	}
 
 	@Bean
-	public Binding myNamasteBinding(
+	public Binding myRatingBinding(
 			@Qualifier("myRatingQueue") Queue queue,
 			@Qualifier("myRatingExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(Constant.RATING_ROUTING_KEY);
@@ -45,7 +45,7 @@ public class SpringConfiguration {
 	}
 
 	@Bean
-	public Binding myHelloBinding(
+	public Binding myOrderBinding(
 			@Qualifier("myOrderQueue") Queue queue,
 			@Qualifier("myOrderExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(Constant.ORDER_ROUTING_KEY);
