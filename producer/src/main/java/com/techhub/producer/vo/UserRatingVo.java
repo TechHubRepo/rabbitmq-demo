@@ -1,4 +1,4 @@
-package com.techhub.consumer.vo;
+package com.techhub.producer.vo;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package com.techhub.producer.service;
 
-import com.techhub.consumer.vo.UserRatingVo;
 import com.techhub.producer.vo.OrderInfoVo;
+import com.techhub.producer.vo.UserRatingVo;
 
 public interface ProducerService {
 

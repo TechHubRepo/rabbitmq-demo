@@ -4,8 +4,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import com.techhub.consumer.config.Constant;
+import com.techhub.consumer.vo.OrderInfoVo;
 import com.techhub.consumer.vo.UserRatingVo;
-import com.techhub.producer.vo.OrderInfoVo;
 
 @Service
 public class ConsumerService {

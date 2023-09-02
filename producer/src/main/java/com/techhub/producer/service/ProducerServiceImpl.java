@@ -4,9 +4,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techhub.consumer.vo.UserRatingVo;
 import com.techhub.producer.config.Constant;
 import com.techhub.producer.vo.OrderInfoVo;
+import com.techhub.producer.vo.UserRatingVo;
 
 @Service
 public class ProducerServiceImpl implements ProducerService {

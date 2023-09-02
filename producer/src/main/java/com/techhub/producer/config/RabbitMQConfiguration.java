@@ -6,12 +6,19 @@ import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfiguration {
+
+	@Bean
+	public MessageConverter jsonMessageConverter() {
+		return new Jackson2JsonMessageConverter();
+	}
 
 	/** RATING exchange, queue and routing key configuration */
 
@@ -26,8 +33,7 @@ public class RabbitMQConfiguration {
 	}
 
 	@Bean
-	public Binding myRatingBinding(
-			@Qualifier("myRatingQueue") Queue queue,
+	public Binding myRatingBinding(@Qualifier("myRatingQueue") Queue queue,
 			@Qualifier("myRatingExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(Constant.RATING_ROUTING_KEY);
 	}
@@ -45,8 +51,7 @@ public class RabbitMQConfiguration {
 	}
 
 	@Bean
-	public Binding myOrderBinding(
-			@Qualifier("myOrderQueue") Queue queue,
+	public Binding myOrderBinding(@Qualifier("myOrderQueue") Queue queue,
 			@Qualifier("myOrderExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(Constant.ORDER_ROUTING_KEY);
 	}
